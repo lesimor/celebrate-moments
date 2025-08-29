@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { 
   Heart, Flower2, User, Menu, X, Sparkles, Palette, 
-  Star, ChevronRight, ArrowUpRight, CheckCircle, Calendar, MapPin, Users,
+  Star, ChevronRight, ArrowUpRight, CheckCircle, MapPin, Users,
   BarChart3, Gift, Smartphone, Crown, Lock, Eye, Zap, Award, Sun,
-  Coffee, Camera, MessageSquare, Cloud, Rainbow
+  Coffee, Rainbow
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -14,13 +14,11 @@ export function HomePageBright() {
   const { user, isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCard, setActiveCard] = useState<string | null>(null);
-  const [selectedPlan, setSelectedPlan] = useState<'free' | 'premium'>('premium');
   const { scrollY } = useScroll();
   
   // Parallax transforms for bright design
   const heroY = useTransform(scrollY, [0, 500], [0, 100]);
   const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.8]);
-  const cardsY = useTransform(scrollY, [200, 700], [50, 0]);
   
   // Bouncy animation for bright design
   const bounceAnimation = {

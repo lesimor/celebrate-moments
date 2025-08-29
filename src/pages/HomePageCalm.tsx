@@ -120,7 +120,9 @@ export function HomePageCalm() {
         >
           <motion.h1 
             className="hero-title"
-            {...fadeInUp}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             소중한 순간을<br />
             <span className="text-gradient">아름답게</span> 전달하세요

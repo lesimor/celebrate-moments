@@ -1,4 +1,4 @@
-# GitHub Pages 배포 가이드
+# Celebrate Moments 배포 가이드
 
 이 프로젝트는 GitHub Pages를 통해 쉽게 배포할 수 있도록 설정되어 있습니다.
 
@@ -12,7 +12,7 @@
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/[username]/wedding-invitation.git
+   git remote add origin https://github.com/[username]/celebrate-moments.git
    git push -u origin main
    ```
 
@@ -27,7 +27,7 @@
 
 4. **접속 URL**
    ```
-   https://[username].github.io/wedding-invitation/
+   https://[username].github.io/
    ```
 
 ### 방법 2: 수동 배포 (gh-pages 사용)
@@ -46,7 +46,7 @@
 
 3. **접속 URL**
    ```
-   https://[username].github.io/wedding-invitation/
+   https://[username].github.io/
    ```
 
 ## 커스텀 도메인 사용하기
@@ -88,10 +88,10 @@
    - 실패한 경우 로그 확인
 
 2. **base URL 확인**
-   - `vite.config.ts`의 `base` 설정이 저장소 이름과 일치하는지 확인
-   - 저장소 이름이 `wedding-invitation`이 아닌 경우:
+   - `vite.config.ts`의 `base` 설정이 `'/'`로 되어 있는지 확인
+   - 커스텀 도메인 사용 시 루트 경로로 배포됩니다:
      ```typescript
-     base: process.env.NODE_ENV === 'production' ? '/your-repo-name/' : '/'
+     base: '/'  // 루트 경로로 배포
      ```
 
 3. **GitHub Pages 설정 확인**
@@ -109,7 +109,7 @@
 GitHub Actions 배포 상태 뱃지:
 
 ```markdown
-[![Deploy to GitHub Pages](https://github.com/[username]/wedding-invitation/actions/workflows/deploy.yml/badge.svg)](https://github.com/[username]/wedding-invitation/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/[username]/celebrate-moments/actions/workflows/deploy.yml/badge.svg)](https://github.com/[username]/celebrate-moments/actions/workflows/deploy.yml)
 ```
 
 ## 추가 리소스

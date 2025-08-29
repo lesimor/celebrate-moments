@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Heart, Flower2, User, LogOut, Menu, X, Sparkles, Clock, Shield, Palette, Star, ChevronRight, ArrowUpRight, CheckCircle } from 'lucide-react';
+import { Heart, Flower2, User, Menu, X, Sparkles, Clock, Shield, Palette, Star, ChevronRight, ArrowUpRight, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import '../styles/HomePageModern.css';
@@ -22,7 +22,7 @@ export function HomePageModern() {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut"
+      ease: "easeInOut" as const
     }
   };
 

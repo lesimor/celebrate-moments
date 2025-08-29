@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wedding Invitation</title>
+    <title>Celebrate Moments - 소중한 순간을 함께</title>
     <script>
-      // GitHub Pages SPA 리다이렉트 핸들링
+      // SPA 리다이렉트 핸들링
+      // 404 페이지에서 루트로 리다이렉트하여 React Router가 처리하도록 함
       const path = window.location.pathname;
-      const base = '/wedding-invitation/';
-      if (path !== base && !path.startsWith(base)) {
-        window.location.replace(base);
+      if (path !== '/') {
+        // 경로를 유지하면서 index.html로 리다이렉트
+        window.history.replaceState(null, null, path);
       }
     </script>
   </head>

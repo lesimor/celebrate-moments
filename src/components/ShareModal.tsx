@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Copy, Share2, Download, MessageCircle } from 'lucide-react';
+import { X, Copy, Download, MessageCircle } from 'lucide-react';
 import QRCode from 'qrcode';
 import {
   FacebookShareButton,
@@ -148,7 +148,7 @@ export function ShareModal({ isOpen, onClose, title, url, type }: ShareModalProp
                   <span>카카오톡</span>
                 </button>
                 
-                <FacebookShareButton url={fullUrl} quote={title}>
+                <FacebookShareButton url={fullUrl}>
                   <div className="social-share-btn facebook">
                     <FacebookIcon size={24} round />
                     <span>페이스북</span>
