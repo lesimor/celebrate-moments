@@ -147,7 +147,7 @@ export function FuneralForm() {
         // Update existing event
         await EventService.updateEvent(id, {
           title,
-          date: formData.funeral.date,
+          date: formData.funeral.funeralDate,
           data: formData,
           status: 'published'
         });
@@ -156,7 +156,7 @@ export function FuneralForm() {
         await EventService.createEvent(user.id, {
           type: 'funeral',
           title,
-          date: formData.funeral.date,
+          date: formData.funeral.funeralDate,
           data: formData,
           status: 'published'
         });

@@ -1,4 +1,4 @@
-import { User, LoginCredentials, RegisterData } from '../types/user';
+import type { User, LoginCredentials, RegisterData } from '../types';
 
 const USERS_KEY = 'wedding_users';
 const CURRENT_USER_KEY = 'wedding_current_user';

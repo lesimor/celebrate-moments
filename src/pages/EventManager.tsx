@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Plus, Eye, Edit, Trash2, Copy, Share2, BarChart, LogOut, User } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { EventService } from '../services/event.service';
-import { UserEvent } from '../types/user';
+import type { UserEvent } from '../types';
 import '../styles/EventManager.css';
 
 

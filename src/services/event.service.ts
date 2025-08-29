@@ -1,4 +1,4 @@
-import { UserEvent } from '../types/user';
+import type { UserEvent } from '../types';
 
 const EVENTS_KEY = 'wedding_events';
 

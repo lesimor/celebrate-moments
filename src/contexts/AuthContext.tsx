@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User, LoginCredentials, RegisterData, AuthState } from '../types/user';
+import type { User, LoginCredentials, RegisterData, AuthState } from '../types';
 import { AuthService } from '../services/auth.service';
 
 interface AuthContextType extends AuthState {
