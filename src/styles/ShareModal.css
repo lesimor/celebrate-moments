@@ -1,0 +1,267 @@
+.share-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.share-modal {
+  background: white;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.share-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.share-header h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+.share-content {
+  padding: 24px;
+}
+
+/* QR Section */
+.qr-section {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.qr-section h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 16px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.download-btn:hover {
+  background: #5a6fe8;
+  transform: translateY(-2px);
+}
+
+/* URL Section */
+.url-section {
+  margin-bottom: 32px;
+}
+
+.url-section h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.url-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.url-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f8f9fa;
+  color: #666;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.copy-btn:hover {
+  background: #f8f9fa;
+}
+
+.copy-btn.copied {
+  background: #4CAF50;
+  color: white;
+  border-color: #4CAF50;
+}
+
+/* Social Section */
+.social-section {
+  margin-bottom: 32px;
+}
+
+.social-section h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.social-share-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 8px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.social-share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social-share-btn.kakao {
+  background: #FEE500;
+  border: none;
+}
+
+.social-share-btn.kakao:hover {
+  background: #FDD835;
+}
+
+.social-share-btn span {
+  font-size: 12px;
+  color: #666;
+}
+
+.social-share-btn.kakao span {
+  color: #000;
+}
+
+/* SMS Section */
+.sms-section {
+  margin-bottom: 16px;
+}
+
+.sms-section h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.sms-template {
+  position: relative;
+}
+
+.sms-text {
+  width: 100%;
+  height: 120px;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: none;
+  background: #f8f9fa;
+  color: #666;
+  font-family: inherit;
+}
+
+.sms-copy-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sms-copy-btn:hover {
+  background: #5a6fe8;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .share-modal {
+    max-width: 100%;
+    border-radius: 20px 20px 0 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .social-buttons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

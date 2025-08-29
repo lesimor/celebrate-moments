@@ -1,23 +1,27 @@
-import { Hero } from './components/Hero'
-import { Message } from './components/Message'
-import { Calendar } from './components/Calendar'
-import { Gallery } from './components/Gallery'
-import { Location } from './components/Location'
-import { Contact } from './components/Contact'
-import { weddingData } from './data/weddingData'
-import './styles/index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { WeddingPage } from './pages/WeddingPage';
+import { FuneralPage } from './pages/FuneralPage';
+import { WeddingForm } from './pages/WeddingForm';
+import { FuneralForm } from './pages/FuneralForm';
+import { EventManager } from './pages/EventManager';
+import { LoginPage } from './pages/LoginPage';
+import './styles/index.css';
 
 function App() {
   return (
-    <div className="app">
-      <Hero data={weddingData} />
-      <Message data={weddingData} />
-      <Calendar data={weddingData} />
-      <Gallery data={weddingData} />
-      <Location data={weddingData} />
-      <Contact data={weddingData} />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/wedding/new" element={<WeddingForm />} />
+        <Route path="/wedding/:id" element={<WeddingPage />} />
+        <Route path="/funeral/new" element={<FuneralForm />} />
+        <Route path="/funeral/:id" element={<FuneralPage />} />
+        <Route path="/my-events" element={<EventManager />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App

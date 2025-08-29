@@ -1,0 +1,379 @@
+/* Funeral Page Styles */
+.funeral-app {
+  background-color: #f8f9fa;
+}
+
+/* Funeral Hero Section */
+.funeral-hero-section {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.funeral-hero-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+.funeral-ribbon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: #000;
+}
+
+.funeral-hero-content {
+  color: white;
+}
+
+.funeral-icon {
+  display: inline-block;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.funeral-title {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  letter-spacing: 8px;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.deceased-info {
+  margin-bottom: 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.deceased-name {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.deceased-dates {
+  font-size: 18px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.deceased-age {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.funeral-schedule {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 18px;
+}
+
+.schedule-item:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.schedule-label {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.schedule-value {
+  font-weight: 400;
+}
+
+/* Funeral Message Section */
+.funeral-message-section {
+  background: white;
+}
+
+.mourners-info {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid #e9ecef;
+}
+
+.chief-mourner {
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.mourner-label {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #2c3e50;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 12px;
+}
+
+.mourner-name {
+  font-weight: 500;
+  margin-right: 4px;
+}
+
+.mourner-relation {
+  color: #6c757d;
+}
+
+.other-mourners {
+  font-size: 16px;
+  color: #495057;
+}
+
+.mourner-item {
+  margin-right: 8px;
+}
+
+/* Funeral Info Section */
+.funeral-info-section {
+  background: #f8f9fa;
+}
+
+.funeral-details {
+  display: grid;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.detail-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #2c3e50;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.detail-info {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #495057;
+}
+
+.venue-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 8px;
+}
+
+.venue-hall {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+.venue-address {
+  color: #6c757d;
+  margin-bottom: 8px;
+}
+
+.venue-phone a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.venue-phone a:hover {
+  text-decoration: underline;
+}
+
+.datetime-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #495057;
+}
+
+.datetime-row svg {
+  color: #2c3e50;
+}
+
+.burial-location {
+  font-size: 18px;
+  font-weight: 500;
+  color: #212529;
+  margin-bottom: 12px;
+}
+
+/* Funeral Location Section */
+.funeral-location-section {
+  background: white;
+}
+
+/* Funeral Contact Section */
+.funeral-contact-section {
+  background: #f8f9fa;
+}
+
+.contact-groups {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-relation {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Funeral Condolences Section */
+.funeral-condolences-section {
+  background: white;
+  padding-bottom: 80px;
+}
+
+.condolence-form-container {
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.condolence-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.condolence-input {
+  padding: 12px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+}
+
+.condolence-textarea {
+  padding: 12px 16px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 16px;
+  resize: vertical;
+  min-height: 80px;
+  background: white;
+  font-family: inherit;
+}
+
+.condolence-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.condolence-submit:hover {
+  background: #34495e;
+}
+
+.condolences-list {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.condolence-item {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #2c3e50;
+}
+
+.condolence-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.condolence-name {
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.condolence-time {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.condolence-message {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #495057;
+  white-space: pre-wrap;
+}
+
+.no-condolences {
+  text-align: center;
+  padding: 40px;
+  color: #6c757d;
+}
+
+.no-condolences p {
+  margin-bottom: 8px;
+}
+
+/* Responsive Design for Funeral Pages */
+@media (max-width: 768px) {
+  .funeral-title {
+    font-size: 36px;
+    letter-spacing: 6px;
+  }
+  
+  .deceased-name {
+    font-size: 28px;
+  }
+  
+  .funeral-details {
+    grid-template-columns: 1fr;
+  }
+}

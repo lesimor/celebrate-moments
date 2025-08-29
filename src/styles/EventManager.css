@@ -1,0 +1,346 @@
+.event-manager-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px;
+}
+
+.manager-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.manager-header {
+  background: white;
+  border-radius: 12px;
+  padding: 24px 32px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.manager-header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-home,
+.btn-logout {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-home {
+  background: white;
+  color: #667eea;
+  border: 1px solid #667eea;
+  text-decoration: none;
+}
+
+.btn-home:hover {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.btn-logout {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+}
+
+.btn-logout:hover {
+  background: #ff5252;
+}
+
+/* Create Actions */
+.create-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.create-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: #333;
+  transition: all 0.3s ease;
+  border: 2px dashed #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.create-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.create-card.wedding {
+  border-color: #ff6b6b;
+}
+
+.create-card.wedding:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.05), rgba(254, 202, 87, 0.05));
+}
+
+.create-card.funeral {
+  border-color: #636e72;
+}
+
+.create-card.funeral:hover {
+  background: linear-gradient(135deg, rgba(99, 110, 114, 0.05), rgba(178, 190, 195, 0.05));
+}
+
+.create-card span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Events Section */
+.events-section {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.events-section h2 {
+  font-size: 22px;
+  margin-bottom: 24px;
+  color: #333;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.no-events {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.no-events p {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.event-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.event-card.wedding {
+  border-left: 4px solid #ff6b6b;
+}
+
+.event-card.funeral {
+  border-left: 4px solid #636e72;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.event-type {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.event-type.wedding {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff6b6b;
+}
+
+.event-type.funeral {
+  background: rgba(99, 110, 114, 0.1);
+  color: #636e72;
+}
+
+.event-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.event-status.published {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4CAF50;
+}
+
+.event-status.draft {
+  background: rgba(255, 152, 0, 0.1);
+  color: #FF9800;
+}
+
+.event-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.event-date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.event-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.event-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.1);
+}
+
+.action-btn.delete:hover {
+  background: #ff6b6b;
+}
+
+/* Subscription Info */
+.subscription-info {
+  margin-bottom: 40px;
+}
+
+.subscription-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.subscription-card h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.subscription-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.subscription-card li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  color: #666;
+}
+
+.subscription-card li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+}
+
+.upgrade-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upgrade-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .manager-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .create-actions {
+    grid-template-columns: 1fr;
+  }
+  
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: center;
+  }
+}
