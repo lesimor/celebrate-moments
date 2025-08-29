@@ -27,7 +27,7 @@
 
 4. **접속 URL**
    ```
-   https://[username].github.io/
+   https://[username].github.io/celebrate-moments/
    ```
 
 ### 방법 2: 수동 배포 (gh-pages 사용)
@@ -46,7 +46,7 @@
 
 3. **접속 URL**
    ```
-   https://[username].github.io/
+   https://[username].github.io/celebrate-moments/
    ```
 
 ## 커스텀 도메인 사용하기
@@ -88,10 +88,10 @@
    - 실패한 경우 로그 확인
 
 2. **base URL 확인**
-   - `vite.config.ts`의 `base` 설정이 `'/'`로 되어 있는지 확인
-   - 커스텀 도메인 사용 시 루트 경로로 배포됩니다:
+   - `vite.config.ts`의 `base` 설정이 저장소 이름과 일치하는지 확인
+   - GitHub Pages 프로젝트 사이트로 배포 시:
      ```typescript
-     base: '/'  // 루트 경로로 배포
+     base: process.env.NODE_ENV === 'production' ? '/celebrate-moments/' : '/'
      ```
 
 3. **GitHub Pages 설정 확인**

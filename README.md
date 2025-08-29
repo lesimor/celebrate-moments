@@ -191,7 +191,7 @@ src/
 npm run deploy
 ```
 
-배포 URL: `https://[yourdomain].com` 또는 `https://[username].github.io`
+배포 URL: `https://[username].github.io/celebrate-moments/`
 
 ### 기타 배포 옵션
 

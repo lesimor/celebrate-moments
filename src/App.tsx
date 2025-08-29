@@ -11,8 +11,10 @@ import { LoginPage } from './pages/LoginPage';
 import './styles/index.css';
 
 function App() {
+  const basename = import.meta.env.PROD ? '/celebrate-moments' : '/';
+  
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <Routes>
           <Route path="/" element={<HomePageCalm />} />
