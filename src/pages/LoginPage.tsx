@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Phone, ArrowRight } from 'lucide-react';
+import { Mail, Lock, User, Phone, ArrowRight, AlertCircle } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
 import '../styles/LoginPage.css';
 
 export function LoginPage() {
-  const navigate = useNavigate();
+  const { login, register } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -15,21 +18,41 @@ export function LoginPage() {
     confirmPassword: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
+    setLoading(true);
     
-    if (isLogin) {
-      // TODO: Implement login
-      console.log('Login:', formData.email, formData.password);
-      navigate('/my-events');
-    } else {
-      // TODO: Implement signup
-      if (formData.password !== formData.confirmPassword) {
-        alert('비밀번호가 일치하지 않습니다.');
-        return;
+    try {
+      if (isLogin) {
+        await login({
+          email: formData.email,
+          password: formData.password
+        });
+      } else {
+        if (formData.password !== formData.confirmPassword) {
+          setError('비밀번호가 일치하지 않습니다.');
+          setLoading(false);
+          return;
+        }
+        
+        if (formData.password.length < 6) {
+          setError('비밀번호는 최소 6자 이상이어야 합니다.');
+          setLoading(false);
+          return;
+        }
+        
+        await register({
+          email: formData.email,
+          password: formData.password,
+          name: formData.name,
+          phone: formData.phone
+        });
       }
-      console.log('Signup:', formData);
-      navigate('/my-events');
+    } catch (err: any) {
+      setError(err.message || '오류가 발생했습니다. 다시 시도해주세요.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -67,6 +90,27 @@ export function LoginPage() {
           </div>
 
           <form className="auth-form" onSubmit={handleSubmit}>
+            {error && (
+              <motion.div
+                className="error-message"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{
+                  backgroundColor: '#fee',
+                  border: '1px solid #fcc',
+                  borderRadius: '8px',
+                  padding: '12px',
+                  marginBottom: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  color: '#c00'
+                }}
+              >
+                <AlertCircle size={20} />
+                <span>{error}</span>
+              </motion.div>
+            )}
             {!isLogin && (
               <motion.div
                 className="form-field"
@@ -163,20 +207,20 @@ export function LoginPage() {
               </div>
             )}
 
-            <button type="submit" className="submit-btn">
-              {isLogin ? '로그인' : '회원가입'}
-              <ArrowRight size={20} />
+            <button type="submit" className="submit-btn" disabled={loading}>
+              {loading ? '처리 중...' : (isLogin ? '로그인' : '회원가입')}
+              {!loading && <ArrowRight size={20} />}
             </button>
           </form>
 
           <div className="social-login">
             <p className="divider">또는</p>
             <div className="social-buttons">
-              <button className="social-btn kakao">
-                카카오로 시작하기
+              <button className="social-btn kakao" type="button" disabled>
+                카카오로 시작하기 (준비중)
               </button>
-              <button className="social-btn naver">
-                네이버로 시작하기
+              <button className="social-btn naver" type="button" disabled>
+                네이버로 시작하기 (준비중)
               </button>
             </div>
           </div>

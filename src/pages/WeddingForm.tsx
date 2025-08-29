@@ -1,12 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Save, Eye } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { EventService } from '../services/event.service';
 import '../styles/EventForm.css';
 
 export function WeddingForm() {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const { user } = useAuth();
   const [step, setStep] = useState(1);
+  const [saving, setSaving] = useState(false);
   const [formData, setFormData] = useState({
     template: 'modern',
     groom: {
@@ -81,10 +86,44 @@ export function WeddingForm() {
     navigate('/wedding/preview');
   };
 
-  const handleSave = () => {
-    // TODO: Save to backend
-    alert('청첩장이 저장되었습니다!');
-    navigate('/my-events');
+  const handleSave = async () => {
+    if (!user) {
+      alert('로그인이 필요합니다.');
+      navigate('/login');
+      return;
+    }
+
+    setSaving(true);
+    try {
+      const title = `${formData.groom.name} ♥ ${formData.bride.name}`;
+      
+      if (id) {
+        // Update existing event
+        await EventService.updateEvent(id, {
+          title,
+          date: formData.wedding.date,
+          data: formData,
+          status: 'published'
+        });
+      } else {
+        // Create new event
+        await EventService.createEvent(user.id, {
+          type: 'wedding',
+          title,
+          date: formData.wedding.date,
+          data: formData,
+          status: 'published'
+        });
+      }
+      
+      alert('청첩장이 저장되었습니다!');
+      navigate('/my-events');
+    } catch (error) {
+      console.error('Failed to save event:', error);
+      alert('저장에 실패했습니다.');
+    } finally {
+      setSaving(false);
+    }
   };
 
   const renderStep = () => {
@@ -412,9 +451,9 @@ export function WeddingForm() {
             </button>
             
             {step === 6 ? (
-              <button className="btn-primary" onClick={handleSave}>
+              <button className="btn-primary" onClick={handleSave} disabled={saving}>
                 <Save size={20} />
-                저장하기
+                {saving ? '저장 중...' : '저장하기'}
               </button>
             ) : (
               <button className="btn-primary" onClick={handleNext}>

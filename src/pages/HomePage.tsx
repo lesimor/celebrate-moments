@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
-import { Heart, Flower2 } from 'lucide-react';
+import { Heart, Flower2, User, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 import '../styles/HomePage.css';
 
 export function HomePage() {
+  const { user, isAuthenticated, logout } = useAuth();
+  
   return (
     <div className="home-page">
       <motion.div 
@@ -113,9 +116,39 @@ export function HomePage() {
         </motion.div>
 
         <div className="home-footer">
-          <Link to="/login" className="login-link">로그인</Link>
-          <span className="separator">|</span>
-          <Link to="/my-events" className="my-events-link">내 초대장 관리</Link>
+          {isAuthenticated ? (
+            <>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <User size={16} />
+                <span>{user?.name}님</span>
+              </div>
+              <span className="separator">|</span>
+              <Link to="/my-events" className="my-events-link">내 초대장 관리</Link>
+              <span className="separator">|</span>
+              <button 
+                onClick={logout} 
+                className="logout-button"
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: 'inherit', 
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px'
+                }}
+              >
+                <LogOut size={16} />
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="login-link">로그인</Link>
+              <span className="separator">|</span>
+              <Link to="/login" className="signup-link">회원가입</Link>
+            </>
+          )}
         </div>
       </motion.div>
     </div>

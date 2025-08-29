@@ -1,57 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Plus, Eye, Edit, Trash2, Copy, Share2, BarChart } from 'lucide-react';
+import { Plus, Eye, Edit, Trash2, Copy, Share2, BarChart, LogOut, User } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { EventService } from '../services/event.service';
+import { UserEvent } from '../types/user';
 import '../styles/EventManager.css';
 
-interface EventItem {
-  id: string;
-  type: 'wedding' | 'funeral';
-  title: string;
-  date: string;
-  url: string;
-  views: number;
-  status: 'draft' | 'published';
-  createdAt: string;
-}
 
 export function EventManager() {
   const navigate = useNavigate();
-  const [events] = useState<EventItem[]>([
-    {
-      id: '1',
-      type: 'wedding',
-      title: '이훈희 ♥ 박유리',
-      date: '2025-03-15',
-      url: 'wedding-001',
-      views: 234,
-      status: 'published',
-      createdAt: '2025-01-01'
-    },
-    {
-      id: '2',
-      type: 'funeral',
-      title: '故 홍길동',
-      date: '2025-01-18',
-      url: 'funeral-001',
-      views: 56,
-      status: 'draft',
-      createdAt: '2025-01-15'
-    }
-  ]);
+  const { user, logout } = useAuth();
+  const [events, setEvents] = useState<UserEvent[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleView = (event: EventItem) => {
+  useEffect(() => {
+    loadUserEvents();
+  }, [user]);
+
+  const loadUserEvents = async () => {
+    if (!user) return;
+    
+    try {
+      const userEvents = await EventService.getUserEvents(user.id);
+      setEvents(userEvents);
+    } catch (error) {
+      console.error('Failed to load events:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleView = (event: UserEvent) => {
     navigate(`/${event.type}/${event.url}`);
   };
 
-  const handleEdit = (event: EventItem) => {
+  const handleEdit = (event: UserEvent) => {
     navigate(`/${event.type}/edit/${event.id}`);
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     if (confirm('정말 삭제하시겠습니까?')) {
-      // TODO: Delete event
-      console.log('Delete event:', id);
+      try {
+        await EventService.deleteEvent(id);
+        setEvents(events.filter(e => e.id !== id));
+      } catch (error) {
+        console.error('Failed to delete event:', error);
+        alert('삭제에 실패했습니다.');
+      }
     }
   };
 
@@ -61,7 +57,7 @@ export function EventManager() {
     alert('URL이 복사되었습니다.');
   };
 
-  const handleShare = (event: EventItem) => {
+  const handleShare = (event: UserEvent) => {
     const fullUrl = `${window.location.origin}/${event.type}/${event.url}`;
     if (navigator.share) {
       navigator.share({
@@ -83,8 +79,14 @@ export function EventManager() {
         >
           <h1>내 초대장 관리</h1>
           <div className="header-actions">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginRight: '16px' }}>
+              <User size={18} />
+              <span>{user?.name}님</span>
+            </div>
             <Link to="/" className="btn-home">홈으로</Link>
-            <button className="btn-logout">로그아웃</button>
+            <button className="btn-logout" onClick={logout}>
+              <LogOut size={18} style={{ marginRight: '4px' }} />
+              로그아웃</button>
           </div>
         </motion.div>
 
@@ -102,7 +104,11 @@ export function EventManager() {
         <div className="events-section">
           <h2>내 초대장 목록</h2>
           
-          {events.length === 0 ? (
+          {loading ? (
+            <div className="no-events">
+              <p>로딩 중...</p>
+            </div>
+          ) : events.length === 0 ? (
             <div className="no-events">
               <p>아직 만든 초대장이 없습니다.</p>
               <p>위의 버튼을 클릭하여 첫 초대장을 만들어보세요!</p>
@@ -127,7 +133,7 @@ export function EventManager() {
                   </div>
                   
                   <h3 className="event-title">{event.title}</h3>
-                  <p className="event-date">{event.date}</p>
+                  <p className="event-date">{event.date || '날짜 미정'}</p>
                   
                   <div className="event-stats">
                     <div className="stat-item">
@@ -135,7 +141,7 @@ export function EventManager() {
                       <span>조회수 {event.views}</span>
                     </div>
                     <div className="stat-item">
-                      <span>생성일: {event.createdAt}</span>
+                      <span>생성일: {new Date(event.createdAt).toLocaleDateString('ko-KR')}</span>
                     </div>
                   </div>
                   
